@@ -25,12 +25,10 @@ enum PokemonType {
 export var id: int
 export var generation: int
 export var name: String
-export var spriteUrl: String
 export var type: int = PokemonType.Normal | PokemonType.Rock
 
-func _init(_name: String = "?", _spriteUrl: String = "?", _type: int = PokemonType.Normal) -> void:
+func _init(_name: String = "?", _type: int = PokemonType.Normal) -> void:
 	name = _name
-	spriteUrl = _spriteUrl
 	type = _type
 
 static func get_type_from_string(_type: String) -> int:
