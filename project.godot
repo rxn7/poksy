@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "PokeApi",
-"language": "GDScript",
-"path": "res://Scripts/PokeApi.gd"
-}, {
 "base": "Resource",
 "class": "PokemonData",
 "language": "GDScript",
@@ -25,7 +20,6 @@ _global_script_classes=[ {
 "path": "res://Scripts/Random.gd"
 } ]
 _global_script_class_icons={
-"PokeApi": "",
 "PokemonData": "",
 "Random": ""
 }
