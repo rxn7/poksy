@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/rxn/dev/godot/poksy/android/build/build/intermediates/merged_res/debug/drawable-nodpi_splash_bg_color.png.flat",
+        "source": "/home/rxn/dev/godot/poksy/android/build/res/drawable-nodpi/splash_bg_color.png"
+    },
+    {
+        "merged": "/home/rxn/dev/godot/poksy/android/build/build/intermediates/merged_res/debug/drawable-nodpi_splash.png.flat",
+        "source": "/home/rxn/dev/godot/poksy/android/build/res/drawable-nodpi/splash.png"
+    },
+    {
+        "merged": "/home/rxn/dev/godot/poksy/android/build/build/intermediates/merged_res/debug/drawable_splash_drawable.xml.flat",
+        "source": "/home/rxn/dev/godot/poksy/android/build/res/drawable/splash_drawable.xml"
+    }
+]
