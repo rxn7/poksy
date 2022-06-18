@@ -5,7 +5,7 @@ const type_translations: Dictionary = {
 	"fire": "ognisty",
 	"water": "wodnisty",
 	"electric": "elektryczny",
-	"grass": "trawowy",
+	"grass": "trawiasty",
 	"ice": "lodowy",
 	"fighting": "walczący",
 	"poison": "trujący",
@@ -16,7 +16,7 @@ const type_translations: Dictionary = {
 	"rock": "kamień",
 	"ghost": "duch",
 	"dragon": "smok",
-	"dark": "ciemny",
+	"dark": "mroczny",
 	"steel": "stalowy",
 	"fairy": "wróżka"
 }

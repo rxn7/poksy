@@ -1,4 +1,0 @@
-#Wed Jun 08 22:31:55 CEST 2022
-base.0=/home/rxn/dev/godot/poksy/android/build/build/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

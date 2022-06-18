@@ -8,7 +8,7 @@ var sprite_http_req: HTTPRequest
 func _init(_id: int = 0) -> void:
 	id = _id
 
-func _ready():
+func _ready() -> void:
 	data_http_req = HTTPRequest.new()
 	data_http_req.connect("request_completed", self, "on_data_received")
 	add_child(data_http_req)
