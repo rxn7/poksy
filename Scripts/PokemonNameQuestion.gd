@@ -5,8 +5,8 @@ var pokemon_data: PokemonData
 
 func _init(_target_id: int = Global.random.rand_i(Global.GENERATION_1_START, Global.GENERATION_2_END)).("Jaki to pokemon?") -> void:
 	pokemon_data = PokemonData.load_data(_target_id)
-	Global.quiz_manager.texture.texture = pokemon_data.load_sprite()
-	Global.quiz_manager.texture.self_modulate = Color.black
+	Global.game_manager.pokemon_texture.texture = pokemon_data.load_sprite()
+	Global.game_manager.pokemon_texture.self_modulate = Color.black
 	
 func get_answers() -> Array:
 	var answers = []
@@ -24,6 +24,6 @@ func get_answers() -> Array:
 	return answers
 
 func on_quessed() -> void:
-	Global.quiz_manager.texture_tween.interpolate_property(Global.quiz_manager.texture, "self_modulate", Global.quiz_manager.texture.self_modulate, Color.white, 0.1, Tween.TRANS_LINEAR)
-	Global.quiz_manager.texture_tween.start()
+	Global.game_manager.texture_tween.interpolate_property(Global.game_manager.pokemon_texture, "self_modulate", Global.game_manager.pokemon_texture.self_modulate, Color.white, 0.1, Tween.TRANS_LINEAR)
+	Global.game_manager.texture_tween.start()
 	pass

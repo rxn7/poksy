@@ -4,36 +4,26 @@ const GENERATION_1_START: int = 1
 const GENERATION_1_END: int = 151
 const GENERATION_2_START: int = 152
 const GENERATION_2_END: int = 251
+const GENERATION_COUNT: int = 2
 const DEV_POKEMONS_DIRECTORY: String = "/home/rxn/dev/godot/poksy/Pokemons"
 
-var background_textures: Array
+var background_imgs: Array = [
+	preload("res://Textures/Backgrounds/1.png"),
+	preload("res://Textures/Backgrounds/2.jpg")
+]
+
 var random: Random
-var quiz_manager: QuizManager
+var game_manager: GameManager
+onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 func _ready() -> void:
 	random = Random.new()
 	random.init()
-	init_background_textures()
-
-func init_background_textures() -> void:
-	var dir: Directory = Directory.new()
-
-	if dir.open("res://Textures/Backgrounds") != OK:
-		return
-
-	if dir.list_dir_begin(true, true) != OK:
-		return
-
-	var file: String = dir.get_next()
-	while file != "":
-		var ext: String = file.get_extension()
-		if ext == "png" || ext == "jpg":
-			background_textures.push_back(load("res://Textures/Backgrounds/%s" % file))
-
-		file = dir.get_next()
-
-	dir.list_dir_end()
+	music_player.stream = preload("res://Sounds/music.mp3")
+	music_player.bus = "Music"
+	music_player.play()
+	add_child(music_player)
 
 
 func get_random_background_texture() -> Texture:
-	return background_textures[Global.random.rand_i(0, background_textures.size()-1)] as Texture
+	return background_imgs[Global.random.rand_i(0, background_imgs.size()-1)]

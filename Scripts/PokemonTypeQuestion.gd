@@ -6,8 +6,8 @@ var pokemon_data: PokemonData
 func _init(_target_id: int = Global.random.rand_i(Global.GENERATION_1_START, Global.GENERATION_2_END)).("") -> void:
 	pokemon_data = PokemonData.load_data(_target_id)
 	title = "Jakiego typu jest %s?" % pokemon_data.name
-	Global.quiz_manager.texture.texture = pokemon_data.load_sprite()
-	Global.quiz_manager.texture.self_modulate = Color.white
+	Global.game_manager.pokemon_texture.texture = pokemon_data.load_sprite()
+	Global.game_manager.pokemon_texture.self_modulate = Color.white
 
 func get_answers() -> Array:
 	var answers = []

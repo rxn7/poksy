@@ -8,10 +8,14 @@ func init() -> void:
 	rng.randomize();
 
 func rand_f(from: float, to: float) -> float:
-	return rng.randf() * (from - to) + from;
+	if to >= from:
+		return rng.randf() * (to - from) + from;
+	return from
 
 func rand_i(from: int, to: int) -> int:
-	return rng.randi_range(from, to);
+	if to >= from:
+		return rng.randi_range(from, to);
+	return from
 
 func rand_i_arr(from: int, to: int, count: int) -> Array:
 	var arr: Array = [];

@@ -14,6 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Answer.gd"
 }, {
+"base": "Button",
+"class": "AnswerButton",
+"language": "GDScript",
+"path": "res://Scripts/AnswerButton.gd"
+}, {
+"base": "TextureRect",
+"class": "BackgroundTextureRect",
+"language": "GDScript",
+"path": "res://Scripts/BackgroundTextureRect.gd"
+}, {
+"base": "Control",
+"class": "ControlShaker",
+"language": "GDScript",
+"path": "res://Scripts/ControlShaker.gd"
+}, {
+"base": "Node",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://Scripts/GameManager.gd"
+}, {
 "base": "Resource",
 "class": "PokemonData",
 "language": "GDScript",
@@ -29,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/PokemonNameQuestion.gd"
 }, {
+"base": "Node",
+"class": "PokemonPreloader",
+"language": "GDScript",
+"path": "res://Editor/PokemonPreloader.gd"
+}, {
 "base": "Question",
 "class": "PokemonTypeQuestion",
 "language": "GDScript",
@@ -37,22 +62,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "PreloadManager",
 "language": "GDScript",
-"path": "res://Editor/PreloadManager.gd"
-}, {
-"base": "Node",
-"class": "Preloader",
-"language": "GDScript",
-"path": "res://Editor/Preloader.gd"
+"path": "res://Editor/PokemonPreloadManager.gd"
 }, {
 "base": "Reference",
 "class": "Question",
 "language": "GDScript",
 "path": "res://Scripts/Question.gd"
-}, {
-"base": "Node",
-"class": "QuizManager",
-"language": "GDScript",
-"path": "res://Scripts/QuizManager.gd"
 }, {
 "base": "Node",
 "class": "Random",
@@ -61,21 +76,28 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Answer": "",
+"AnswerButton": "",
+"BackgroundTextureRect": "",
+"ControlShaker": "",
+"GameManager": "",
 "PokemonData": "",
 "PokemonGenerationQuestion": "",
 "PokemonNameQuestion": "",
+"PokemonPreloader": "",
 "PokemonTypeQuestion": "",
 "PreloadManager": "",
-"Preloader": "",
 "Question": "",
-"QuizManager": "",
 "Random": ""
 }
 
 [application]
 
 config/name="Poksy"
-run/main_scene="res://Scenes/Quiz.tscn"
+run/main_scene="res://Scenes/MainMenu.tscn"
+run/disable_stderr=true
+boot_splash/image="res://Textures/title.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -90,7 +112,11 @@ window/size/height=1080
 window/size/test_width=1920
 window/size/test_height=1080
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -115,7 +141,14 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+gif.animated.texture.plugin={
+"Filter": false,
+"MipMaps": false
+}
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
