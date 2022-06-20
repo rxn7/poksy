@@ -57,6 +57,9 @@ func on_answer_pressed(btn: AnswerButton, is_correct: bool) -> void:
 		play_audio_effect(CORRECT_AUDIO_EFFECT)
 		question_change_timer.wait_time = CORRECT_AUDIO_EFFECT.get_length() / audio_effect_player.pitch_scale 
 		question_change_timer.start()
+		texture_tween.interpolate_property(pokemon_texture, "rect_position", pokemon_texture.rect_position, Vector2(-1000, pokemon_texture.rect_position.y), question_change_timer.wait_time, Tween.TRANS_EXPO, Tween.EASE_IN)
+		texture_tween.interpolate_property(pokemon_texture, "rect_scale", pokemon_texture.rect_scale, Vector2(1.1, 1.1), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+		texture_tween.start()
 
 		for b in answer_container.get_children():
 			b.disable()
@@ -67,5 +70,9 @@ func on_answer_pressed(btn: AnswerButton, is_correct: bool) -> void:
 		btn.disable()
 
 func on_question_change_timer_timeout():
+	ui_shaker.shake(15, 0.2)
 	question_change_timer.stop()
+	texture_tween.interpolate_property(pokemon_texture, "rect_position", pokemon_texture.rect_position, Vector2(0, pokemon_texture.rect_position.y), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	texture_tween.interpolate_property(pokemon_texture, "rect_scale", pokemon_texture.rect_scale, Vector2(1, 1), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	texture_tween.start()
 	set_question(get_random_question())

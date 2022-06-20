@@ -5,3 +5,5 @@
 
 [node name="AnswerButton" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="." index="0"]

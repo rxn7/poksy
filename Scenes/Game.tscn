@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sounds/correct.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scenes/BackgroundTextureRect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/ControlShaker.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/PatrickHandSC80.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=5]
+[ext_resource path="res://Pokemons/Sprites/101.png" type="Texture" id=6]
 
 [node name="Game" type="Node"]
 script = ExtResource( 5 )
@@ -36,8 +37,11 @@ valign = 1
 anchor_top = 0.153
 anchor_right = 1.0
 anchor_bottom = 0.633
-margin_top = -0.240005
-margin_bottom = 0.359985
+margin_top = -0.23999
+margin_bottom = 1.35999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
 

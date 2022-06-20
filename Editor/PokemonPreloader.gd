@@ -40,16 +40,14 @@ func on_data_received(_result: int, _response_code: int, _headers: PoolStringArr
 
 	data.id = json.result["id"]
 	data.name = json.result["species"]["name"]
+	
+	var i: int = 1
+	for gen in Global.generations:
+		if data.id <= gen.end_idx:
+			data.generation = i
+			break
 
-	if data.id <= Global.GENERATION_1_END:
-		data.generation = 1
-
-	elif data.id <= Global.GENERATION_2_END:
-		data.generation = 2
-
-	else:
-		printerr("Received pokemon from unsupported generation, ID: %s", data.id);
-		return;
+		i = i+1
 
 	for type in json.result["types"]:
 		data.types.push_back(type["type"]["name"]);

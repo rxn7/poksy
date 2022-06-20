@@ -3,7 +3,7 @@ class_name PokemonTypeQuestion
 
 var pokemon_data: PokemonData
 
-func _init(_target_id: int = Global.random.rand_i(Global.GENERATION_1_START, Global.GENERATION_2_END)).("") -> void:
+func _init(_target_id: int = Global.get_random_generation().get_random_idx()) -> void:
 	pokemon_data = PokemonData.load_data(_target_id)
 	title = "Jakiego typu jest %s?" % pokemon_data.name
 	Global.game_manager.pokemon_texture.texture = pokemon_data.load_sprite()
@@ -14,7 +14,7 @@ func get_answers() -> Array:
 
 	answers.push_back(Answer.new(pokemon_data.get_types_translated(), true))
 
-	for _i in range(3):
+	for _i in range(5):
 		var types: String = ""
 
 		# FIXME: This can lead to infinite loop
