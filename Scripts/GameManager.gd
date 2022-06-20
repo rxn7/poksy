@@ -10,7 +10,8 @@ onready var ui_shaker: Control = get_node("UI")
 onready var title_label: Label = ui_shaker.get_node("Title")
 onready var pokemon_texture: TextureRect = ui_shaker.get_node("PokemonTexture")
 onready var answer_container: Control = ui_shaker.get_node("AnswerContainer")
-onready var audio_effect_player: AudioStreamPlayer = get_node("AudioEffect")
+onready var answer_audio_player: AudioStreamPlayer = get_node("AnswerAudioEffect")
+onready var transition_audio_player: AudioStreamPlayer = get_node("TransitionAudioEffect")
 onready var question_change_timer: Timer = get_node("QuestionChangeTimer")
 onready var texture_tween: Tween = get_node("TextureTween")
 
@@ -43,9 +44,9 @@ func get_random_question():
 	return null
 
 func play_audio_effect(stream: AudioStream, pitch: float = Global.random.rand_f(0.95, 1.05)) -> void:
-	audio_effect_player.pitch_scale = pitch 
-	audio_effect_player.stream = stream 
-	audio_effect_player.play()
+	answer_audio_player.pitch_scale = pitch 
+	answer_audio_player.stream = stream 
+	answer_audio_player.play()
 
 func on_answer_pressed(btn: AnswerButton, is_correct: bool) -> void:
 	if question_change_timer.time_left != 0:
@@ -55,7 +56,7 @@ func on_answer_pressed(btn: AnswerButton, is_correct: bool) -> void:
 		current_question.on_quessed()
 		add_child(CORRECT_PARTICLES_SCENE.instance())
 		play_audio_effect(CORRECT_AUDIO_EFFECT)
-		question_change_timer.wait_time = CORRECT_AUDIO_EFFECT.get_length() / audio_effect_player.pitch_scale 
+		question_change_timer.wait_time = CORRECT_AUDIO_EFFECT.get_length() / answer_audio_player.pitch_scale 
 		question_change_timer.start()
 		texture_tween.interpolate_property(pokemon_texture, "rect_position", pokemon_texture.rect_position, Vector2(-1000, pokemon_texture.rect_position.y), question_change_timer.wait_time, Tween.TRANS_EXPO, Tween.EASE_IN)
 		texture_tween.interpolate_property(pokemon_texture, "rect_scale", pokemon_texture.rect_scale, Vector2(1.1, 1.1), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)
@@ -71,6 +72,7 @@ func on_answer_pressed(btn: AnswerButton, is_correct: bool) -> void:
 
 func on_question_change_timer_timeout():
 	ui_shaker.shake(15, 0.2)
+	transition_audio_player.play()
 	question_change_timer.stop()
 	texture_tween.interpolate_property(pokemon_texture, "rect_position", pokemon_texture.rect_position, Vector2(0, pokemon_texture.rect_position.y), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	texture_tween.interpolate_property(pokemon_texture, "rect_scale", pokemon_texture.rect_scale, Vector2(1, 1), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT)

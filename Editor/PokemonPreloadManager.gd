@@ -7,7 +7,7 @@ var queried_ids: Array
 func _ready() -> void:
 	print("Preloading Pokemons...")
 	start_time = OS.get_system_time_msecs()
-	for i in range(Global.generations[Global.generations.size()-1].end_idx):
+	for i in range(1, Global.generations[Global.generations.size()-1].end_idx+1):
 		request_pokemon(i)
 
 func _process(_dt: float) -> void:
