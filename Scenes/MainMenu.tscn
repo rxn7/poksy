@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/CustomButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Textures/title.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/BackgroundTextureRect.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Fonts/PatrickHandSC80.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/PatrickHandSC60.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/PatrickHandSC80.tres" type="DynamicFont" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "SplashText"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.960784, 0.203922, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "PBText"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 0.0, 5.0 ]
+}
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
@@ -30,14 +66,36 @@ margin_right = -1.28003
 margin_bottom = 0.399963
 text = "Graj"
 
-[node name="Label" type="Label" parent="."]
+[node name="SplashText" type="Label" parent="."]
 anchor_top = 0.899
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 0.0799561
+margin_top = 0.0800171
 custom_fonts/font = ExtResource( 5 )
 text = "Dla Igusi od Maćka z okazji 6 urodzin :)"
 align = 1
 valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SplashText"]
+autoplay = "SplashText"
+anims/SplashText = SubResource( 1 )
+
+[node name="PBText" type="Label" parent="."]
+anchor_left = 0.077
+anchor_top = 0.299
+anchor_right = 0.923
+anchor_bottom = 0.4
+margin_left = -0.840012
+margin_top = 0.0799866
+margin_right = 0.839966
+rect_rotation = -0.494952
+rect_pivot_offset = Vector2( 813, 54 )
+custom_fonts/font = ExtResource( 6 )
+text = "Rekord: 0"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PBText"]
+autoplay = "PBText"
+anims/PBText = SubResource( 2 )
 
 [connection signal="pressed" from="PlayButton" to="." method="on_play_button_pressed"]

@@ -3,6 +3,7 @@
 [ext_resource path="res://Scripts/BackgroundTextureRect.gd" type="Script" id=1]
 
 [node name="Background" type="TextureRect"]
+modulate = Color( 0.545098, 0.545098, 0.545098, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
