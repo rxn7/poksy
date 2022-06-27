@@ -36,10 +36,9 @@ func _ready() -> void:
 
 func _process(dt: float) -> void:
 	answer_time_indicator.rect_size.x = answer_time_timer.time_left / MAX_ANSWER_TIME * 1920
-
-	answer_time_indicator.color.g = answer_time_timer.time_left / MAX_ANSWER_TIME
-	answer_time_indicator.color.r = 1 - answer_time_indicator.color.g
-	answer_time_indicator.color.b = 0
+	answer_time_indicator.color.g = answer_time_timer.time_left / MAX_ANSWER_TIME * 0.6
+	answer_time_indicator.color.r = (1 - answer_time_indicator.color.g) * 0.6
+	answer_time_indicator.color.b = 0.1
 
 func on_lose() -> void:
 	lose_timer.wait_time = LOSE_AUDIO_EFFECT.get_length()
@@ -86,7 +85,7 @@ func get_random_question():
 
 func lose_life() -> void:
 	SoundManager.play(WRONG_AUDIO_EFFECT, Global.random.rand_f(0.9, 1.1))
-
+	Input.vibrate_handheld(100)
 	ui_shaker.shake(50, 0.25)
 
 	lives -= 1

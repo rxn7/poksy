@@ -14,7 +14,7 @@ func get_answers() -> Array:
 
 	answers.push_back(Answer.new(pokemon_data.get_types_translated(), true))
 
-	for _i in range(5):
+	for _i in range(3):
 		var types: String = ""
 
 		# FIXME: This can lead to infinite loop

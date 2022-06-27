@@ -15,7 +15,7 @@ func get_answers() -> Array:
 	answers.push_back(Answer.new(pokemon_data.name, true))
 
 	var incorrect_ids: Array = Global.random.rand_i_arr_except(Global.generations[0].start_idx, Global.generations[Global.generations.size()-1].end_idx, 5, pokemon_data.id)
-	for i in range(5):
+	for i in range(3):
 		answers.push_back(Answer.new(PokemonData.load_data(incorrect_ids[i]).name, false))
 
 	randomize()

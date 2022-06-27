@@ -3,8 +3,7 @@ class_name PokemonPreloader
 
 var id: int = 0
 var data_http_req: HTTPRequest
-var sprite_http_req: HTTPRequest
-var sprite_saved: bool = false
+var sprite_http_req: HTTPRequest var sprite_saved: bool = false
 var data_saved: bool = false
 
 func _init(_id: int = 0) -> void:
