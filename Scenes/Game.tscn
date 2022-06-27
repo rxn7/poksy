@@ -17,8 +17,11 @@ script = ExtResource( 5 )
 [node name="QuestionChangeTimer" type="Timer" parent="."]
 
 [node name="LoseTimer" type="Timer" parent="."]
-wait_time = 1.2
+wait_time = 1.3
 one_shot = true
+
+[node name="AnswerTimeTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [node name="TextureTween" type="Tween" parent="."]
 
@@ -103,5 +106,11 @@ grow_vertical = 2
 rect_min_size = Vector2( 1920, 398 )
 columns = 2
 
+[node name="AnswerTimeIndicator" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 0.034
+margin_bottom = 0.279999
+
 [connection signal="timeout" from="QuestionChangeTimer" to="." method="on_question_change_timer_timeout"]
 [connection signal="timeout" from="LoseTimer" to="." method="on_lose_timer_timeout"]
+[connection signal="timeout" from="AnswerTimeTimer" to="." method="on_answer_time_timer_timeout"]

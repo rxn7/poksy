@@ -46,7 +46,6 @@ func on_data_received(_result: int, _response_code: int, _headers: PoolStringArr
 		if data.id <= gen.end_idx:
 			data.generation = i
 			break
-
 		i = i+1
 
 	for type in json.result["types"]:

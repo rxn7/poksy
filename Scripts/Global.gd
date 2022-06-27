@@ -14,9 +14,9 @@ var background_imgs: Array = [
 	preload("res://Textures/Backgrounds/2.jpg")
 ]
 
+onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 var random: Random
 var game_manager: GameManager
-onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 func get_random_generation() -> Generation:
 	return generations[random.rand_i(0, generations.size()-1)]
@@ -24,9 +24,11 @@ func get_random_generation() -> Generation:
 func _ready() -> void:
 	random = Random.new()
 	random.init()
+
 	music_player.stream = preload("res://Sounds/music.mp3")
 	music_player.bus = "Music"
 	music_player.play()
+
 	add_child(music_player)
 
 
