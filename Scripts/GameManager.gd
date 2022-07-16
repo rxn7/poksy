@@ -41,6 +41,7 @@ func _process(dt: float) -> void:
 	answer_time_indicator.color.b = 0.1
 
 func on_lose() -> void:
+	answer_time_indicator.visible = false
 	lose_timer.wait_time = LOSE_AUDIO_EFFECT.get_length()
 	lose_timer.start()
 
@@ -51,7 +52,6 @@ func on_lose() -> void:
 	if Global.load_highest_score() < score:
 		Global.save_highest_score(score)
 
-# TODO: some kind of indicator
 func on_answer_time_timer_timeout() -> void:
 	lose_life()
 
