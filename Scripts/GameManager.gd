@@ -8,7 +8,7 @@ const LOSE_AUDIO_EFFECT: AudioStream = preload("res://Sounds/lose.wav")
 const ANSWER_BUTTON_SCENE: PackedScene = preload("res://Scenes/AnswerButton.tscn")
 const CORRECT_PARTICLES_SCENE: PackedScene = preload("res://Scenes/CorrectParticles.tscn")
 const MAX_LIVES: int = 3
-const MAX_ANSWER_TIME: float = 8.0
+const MAX_ANSWER_TIME: float = 20.0
 
 signal lives_changed
 

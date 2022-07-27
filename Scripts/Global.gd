@@ -31,7 +31,6 @@ func _ready() -> void:
 
 	add_child(music_player)
 
-
 func get_random_background_texture() -> Texture:
 	return background_imgs[Global.random.rand_i(0, background_imgs.size()-1)]
 
