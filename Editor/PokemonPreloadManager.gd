@@ -5,6 +5,11 @@ var start_time: int
 var queried_ids: Array
 
 func _ready() -> void:
+	var res_dir: Directory = Directory.new()
+	assert(res_dir.open("res://") == OK)
+	assert(res_dir.make_dir_recursive("Pokemons/Sprites") == OK)
+	assert(res_dir.make_dir_recursive("Pokemons/Data") == OK)
+
 	print("Preloading Pokemons...")
 	start_time = OS.get_system_time_msecs()
 	for i in range(1, Global.generations[Global.generations.size()-1].end_idx+1):
@@ -16,7 +21,7 @@ func _process(_dt: float) -> void:
 		add_preloader(id)
 	
 	if(queried_ids.size() == 0 && get_child_count() == 0):
-		print("Pokemons has been preloaded, total time: ", OS.get_system_time_msecs() - start_time, "ms")
+		print("Pokemons have been preloaded, total time: ", OS.get_system_time_msecs() - start_time, "ms")
 		get_tree().quit()
 
 func request_pokemon(id: int) -> void:

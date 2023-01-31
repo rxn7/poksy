@@ -59,7 +59,7 @@ func on_data_received(_result: int, _response_code: int, _headers: PoolStringArr
 
 func on_sprite_received(_result: int, _response_code: int, _headers: PoolStringArray, body: PoolByteArray) -> void:
 	var file: File = File.new()
-	if file.open("%s/Sprites/%s.png" % [Global.DEV_POKEMONS_DIRECTORY, id], File.WRITE) != OK:
+	if file.open("res://Pokemons/Sprites/%s.png" % id, File.WRITE) != OK:
 		printerr("Failed to save pokemon sprite of id: %s" % id)
 		queue_free()
 		return
@@ -72,7 +72,7 @@ func on_sprite_received(_result: int, _response_code: int, _headers: PoolStringA
 		queue_free()
 
 func on_data_load(data: PokemonData) -> void:
-	var result: int = ResourceSaver.save("%s/Data/%s.tres" % [Global.DEV_POKEMONS_DIRECTORY, data.id], data)
+	var result: int = ResourceSaver.save("res://Pokemons/Data/%s.tres" % data.id, data)
 	if result != OK: 
 		printerr("Failed to save preloaded pokemon: %s#%s^%s, result: '%s'" % [data.name, data.id, data.generation, result])
 	else:

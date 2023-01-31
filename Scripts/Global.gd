@@ -1,6 +1,5 @@
 extends Node
 
-const DEV_POKEMONS_DIRECTORY: String = "/home/rxn/dev/godot/poksy/Pokemons"
 const SAVE_DATA_LOCATION: String = "user://poksy.save"
 
 var generations: Array = [

@@ -6,7 +6,7 @@ var available: Array = []
 var queue: Array = []
 
 func _ready() -> void:
-	for i in range(POOL_SIZE):
+	for _i in range(POOL_SIZE):
 		var p: AudioStreamPlayer = AudioStreamPlayer.new()
 		add_child(p)
 		available.push_back(p)
